@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  root:'http://onlineorderfoodbackend.herokuapp.com//api/v1/'
 };
