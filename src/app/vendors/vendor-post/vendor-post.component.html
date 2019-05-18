@@ -1,0 +1,85 @@
+<div class="ui menu fixed">
+  <a  href=""  routerLink="/vendor_home" class="item">Home</a>
+  <div class="right menu">
+    <a href="" routerLink="/vendor_home/vendor_upload" class="item">upload post</a>
+    <a  (click)="storageService.logout()" class="item">Log Out</a>
+  </div>
+</div>
+
+<div class="ui grid" style="background-image: url('https://www.simplyhomefood.com/wp-content/uploads/2014/10/Seamless-Food-Delivery_stepOne_Burrito_13.jpg');height:100%;background-repeat: no-repeat;
+background-size: 100% 100%">
+  <div class="three column row">
+    <div class="column"></div>
+    <div class="column" >
+      <h1 style="text-align: center;color:white">Add Items</h1>
+      <form class="ui form" [formGroup]="postForm">
+        <div class="field">
+          <label style="font-size: 20px">Title</label>
+          <input type="text" formControlName="title" [(ngModel)]="postDetails.title"   placeholder="title">
+          <div *ngIf="postForm.controls['title'].touched&&!postForm.controls['title'].valid">
+            <p>Enter a valid title address</p>
+          </div>
+        </div>
+        <div class="field">
+          <label style="font-size: 20px">Address</label>
+          <input type="text" formControlName="description" [(ngModel)]="postDetails.description"   placeholder="description">
+          <div *ngIf="postForm.controls['description'].touched&&!postForm.controls['description'].valid">
+            <p>Enter a valid description </p>
+          </div>
+        </div>
+        <div class="field">
+          <label style="font-size: 20px">Price</label>
+          <input type="number" formControlName="price" [(ngModel)]="postDetails.price"  placeholder="price">
+          <div *ngIf="postForm.controls['price'].touched&&!postForm.controls['price'].valid">
+            <p>Enter a valid price</p>
+          </div>
+        </div>
+        <div class="field form-group">
+          <label style="font-size: 20px">Location</label>
+          <input type="text" formControlName="location" [(ngModel)]="postDetails.location" placeholder="location" >
+          <div *ngIf="postForm.controls['location'].touched&&!postForm.controls['location'].valid">
+            <p>Enter a valid location</p>
+          </div>
+        </div>
+        <div class="field">
+          <label style="font-size: 20px">Catagory</label>
+          <select  class="ui search dropdown"  formControlName="catagory" [(ngModel)]="postDetails.catagory" placeholder="select Catagory"> 
+           <option *ngFor="let catagory of objectKeys(catagorys)" [value]="catagory">{{catagorys[catagory]}}</option>
+          </select>
+          <div *ngIf="postForm.controls['catagory'].touched && !postForm.controls['catagory'].valid">
+            <p>select one of this</p>
+          </div>
+        </div>
+        <div class="field">
+          <label style="font-size: 20px">Image</label>
+          <input type="file" formControlName="image" [(ngModel)]="postDetails.image" (change)="uploadImage($event)"   placeholder="upload Image">
+          <div *ngIf="postForm.controls['image'].touched&&!postForm.controls['image'].valid">
+            <p>upload a valid image</p>
+          </div>
+          <div *ngIf="imageCheck">
+            <p>please upload only image</p>
+          </div>
+          <div *ngIf="imageComplete">
+            <p>uploading...</p>
+          </div>
+        </div>
+        <button style="text-align: center" data-toggle="modal" data-target="#myModal" data-backdrop="false" class="ui button" type="submit" (click)="onSubmit()" [disabled]="!postForm.valid || submitToComplete">Submit</button>
+      </form>
+    </div>
+    <div class="column"></div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:200px">
+      
+        <div class="modal-header" >
+          <p  style="float:left"> Item uploaded successfully</p>
+          <button  style="float:right" type="button" class="btn btn-default" data-dismiss="modal">ok</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

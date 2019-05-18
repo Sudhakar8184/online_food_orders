@@ -1,0 +1,47 @@
+/* .container {
+    padding:150px;
+    padding-top: 50px;
+}
+
+.category {
+    text-transform: uppercase;
+}
+
+.sub-category {
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+p {
+    color: #333;
+}
+.card {
+ padding: 20px;
+} */
+.menu{
+    background-color: lightblue
+}
+.product-desc {
+    white-space: nowrap; 
+    width: 200px; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.product-desc:hover {
+    overflow: visible;
+}
+p {
+    font-family: Lato;
+  }

@@ -1,0 +1,64 @@
+
+<div class="ui menu fixed">
+  <a  href=""  routerLink="/vendor_home" class="item">Home</a>
+  <div class="right menu">
+    <a href="" routerLink="/vendor_home/vendor_upload" class="item">upload post</a>
+    <a  (click)="storageService.logout()" class="item">Log Out</a>
+  </div>
+</div>
+<div class="ui grid" >
+  <div class="three column row">
+    <div class="column"></div>
+    <div class="column">
+    <div class="form-inline">
+      <div class="form-group">
+        <div class="input-group" style="margin: 0% 2em">
+          <input type="text" [(ngModel)]="searchText" style="height: 45px;width: 350px;float: left" (keyup)="searchClicked()" class="form-control" placeholder="Search your food">
+        </div>
+        <!-- <div class="input-group">
+          <button style="height: 45px;width: 50px;float: left" class="form-control" (keyup)="searchClicked()">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<div class="">
+    <div class="row" style="background-image: url('https://parkscommission.co.richland.wi.us/wp-content/uploads/2014/09/pageBackground.jpg');height:100%;background-repeat: no-repeat;
+    background-size: 100% 100%">
+ <div *ngFor="let pharma of searchData; let i=index" class="card col-md-2" style='margin-bottom: 20px;margin-left:20px;margin-top:20px'>
+    <div class="image">
+      <img [src]="pharma?.image" width="200px" height="200px">
+    </div>
+    <div class="extra" style="color: white">
+        <p class="product-name"><b>{{pharma?.title}}</b></p>
+        <p class="product-desc">{{pharma?.location}}</p>
+        <p class="product-price"><i class="tag icon"></i><strong>{{pharma?.price}}</strong></p>
+    </div>
+    <div class="extra" style="float: left;margin-right:20px;margin-top:20px">
+      <button class="btn btn-danger" (click)="deleteFromAdminList(pharma)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+    </div>
+    <div class="extra" style="float: right;margin-right:20px;margin-top:20px">
+      <a  class="btn btn-info " (click)="checkorders(pharma._id)">orders</a>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-top:200px">
+        
+          <div class="modal-header" >
+            <p  style="float:left"> yours item is Deleted .</p>
+            <button  style="float:right" type="button" class="btn btn-default" data-dismiss="modal">ok</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  

@@ -1,0 +1,89 @@
+<div class="ui menu fixed">
+    <a  href="" routerLink="/user_home" class="item">Home</a>
+    <div class="right menu">
+      <a href="" routerLink="/user_home/user_profile" class="item">User Profile</a>
+      <a  (click)="storageService.logout()" class="item">Log Out</a>
+    </div>
+  </div>
+  <div class="" >
+      <div class="row" style="background-image: url('https://parkscommission.co.richland.wi.us/wp-content/uploads/2014/09/pageBackground.jpg');height:100%;background-repeat: no-repeat;
+      background-size: 100% 100%">
+      <br><br><br><br>
+      <div class="col-md-8">
+       <h2 style='text-align:center;color:white'>Your Orders</h2>
+          <div class="row">
+            <div *ngFor="let pharma of pharmas; let i=index" class="card col-md-2" style='margin-bottom: 20px;margin-left:50px;margin-top:20px'>
+          <div class="image">
+            <img [src]="pharma?.image" width="200px" height="200px">
+          </div>
+          <div class="extra" style="float: left;color: white">
+            <p class="product-name">{{pharma?.title}}</p>
+        <p class="product-desc"><i class="fa fa-address-card" aria-hidden="true"></i>{{pharma?.location}}</p>
+        <p class="product-desc"><i class="fa fa-phone" aria-hidden="true"></i>{{pharma.vendor.phone}}</p>
+        <p class="product-price"><i class="tag icon"></i><strong ><i class="	fas fa-rupee-sign"></i>{{pharma?.price}}</strong></p>
+          </div>
+          <div class="extra" style="float: right;margin-right:20px;margin-top:20px">
+            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal" data-backdrop="false" (click)="deleteFromList(pharma)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div *ngIf="!pharmas.length" style="height: 550px;">
+            <h1 style="margin-top:50px;text-align: center;color: white"> No Products Presents</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="color:white">
+        <div style="color:white;margin-right:2px">
+        <div class="row" >
+            <div class="col-md-4">
+             <h1>name</h1>
+            </div>
+            <div class="col-md-4">
+                <h1>{{user?.name}}</h1>
+              </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+             <h1>email</h1>
+            </div>
+            <div class="col-md-4">
+                <h1>{{user?.email}}</h1>
+              </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+           <h1>address</h1>
+          </div>
+          <div class="col-md-4">
+              <h1>{{user?.address}}</h1>
+            </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+         <h1>phone</h1>
+        </div>
+        <div class="col-md-4">
+            <h1>{{user?.phone}}</h1>
+        </div>
+    </div>
+
+      </div>
+    </div>
+      </div>
+      </div>
+      
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-top:200px">
+        
+          <div class="modal-header" >
+            <p  style="float:left"> yours order is cancelled .</p>
+            <button  style="float:right" type="button" class="btn btn-default" data-dismiss="modal">ok</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>

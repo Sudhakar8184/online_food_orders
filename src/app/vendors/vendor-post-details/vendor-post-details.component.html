@@ -1,0 +1,54 @@
+
+<div class="ui menu fixed">
+  <a  [href]="" 
+  [routerLink]="storageService.getSessionData().role == 'admin'? '/admin_home': '/vendor_home'"
+   class="item">Home</a>
+  <div class="right menu">
+    <a  *ngIf="storageService.getSessionData().role == 'vendor'" href="" routerLink="/vendor_home/vendor_upload"  class="item">upload post</a>
+    <a  (click)="storageService.logout()" class="item">Log Out</a>
+  </div>
+</div>
+<br>
+<div class="">
+    <div class="row" style="background-image: url('https://parkscommission.co.richland.wi.us/wp-content/uploads/2014/09/pageBackground.jpg');height:100%;background-repeat: no-repeat;
+    background-size: 100% 100%;color: white">
+    <div class="row"  style="margin: 30px">
+  <div class="col-md-4">
+    <div class="image">
+      <img [src]="pharma?.image "width="250px" height="300px">
+    </div>
+  </div>
+  <div class="col-md-4">
+    <p class="product-name" style="font-size:30px"><b>{{pharma?.title}}</b></p>
+    <p class="product-desc" style="font-size:20px">{{pharma?.description}}</p>
+  </div>
+  <div class="col-md-4">
+    <p class="product-price" style="font-size:30px"><i class="tag icon"></i><strong>{{pharma?.price}}</strong></p>
+  </div>
+</div>
+<div class="row" style="margin: 30px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>order id</th>
+        <th>name</th>
+        <th>phone</th>
+        <th>address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of pharma?.user; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{user?._id}}</td>
+        <td>{{user?.name}}</td>
+        <td>{{user?.phone}}</td>
+        <td>{{user?.address}}</td> 
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+  </div>
+
+  

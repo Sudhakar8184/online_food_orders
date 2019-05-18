@@ -1,0 +1,14 @@
+
+.menu{
+    background-color: lightblue
+}
+.product-desc {
+    white-space: nowrap; 
+    width: 200px; 
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.product-desc:hover {
+    overflow: visible;
+}
