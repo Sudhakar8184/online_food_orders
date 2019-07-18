@@ -23,7 +23,7 @@ import { NotifierModule} from 'angular-notifier';
 import { AuthGuardService } from './shared/auth/auth-guard.service';
 import { AuthService } from './shared/auth/auth.service';
 import { RoleGuardService } from './shared/auth/role-guard.service';
-
+import {APP_BASE_HREF} from '@angular/common';
 
 
 @NgModule({
@@ -51,7 +51,7 @@ import { RoleGuardService } from './shared/auth/role-guard.service';
     
 
   ],
-  providers: [UserBaseService,StorageService, AuthGuardService,AuthService,RoleGuardService],
+  providers: [UserBaseService,StorageService, AuthGuardService,AuthService,RoleGuardService,{provide: APP_BASE_HREF, useValue : '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
